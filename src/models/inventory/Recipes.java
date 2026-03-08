@@ -23,7 +23,8 @@ public class Recipes {
         inventory.updateItem("BLEND_MANGO", quantity);
     }
 
-    public static void strawberryFruitDrink(Inventory inventory, int quantity) {
+    public static void strawberryFruitDrink(Inventory inventory, int units) {
+        int quantity = units * 3;
         // Update inventory when making strawberryFruitDrink
         // 50ml of blended strawberry, 30ml of ice, 20ml of condensed milk, and 8g of
         // sugar
@@ -38,7 +39,9 @@ public class Recipes {
         inventory.updateItem("DRINK_STRAWBERRY", 100 * quantity);
     }
 
-    public static void bananaFruitDrink(Inventory inventory, int quantity) {
+    public static void bananaFruitDrink(Inventory inventory, int units) {
+        int quantity = units * 3;
+
         // Update inventory when making bananaFruitDrink
         // 50ml of blended banana, 30ml of ice, 20ml of condensed milk, and 8g of sugar
         // produce 100ml of banana fruit drink
@@ -52,7 +55,9 @@ public class Recipes {
         inventory.updateItem("DRINK_BANANA", 100 * quantity);
     }
 
-    public static void mangoFruitDrink(Inventory inventory, int quantity) {
+    public static void mangoFruitDrink(Inventory inventory, int units) {
+        int quantity = units * 3;
+
         // Update inventory when making mangoFruitDrink
         // 50ml of blended mango, 30ml of ice, 20ml of condensed milk, and 8g of sugar
         // produce 100ml of mango fruit drink
