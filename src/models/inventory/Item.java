@@ -167,7 +167,7 @@ public class Item {
             inventory.updateItem(ingredientItem.getCode(), -neededQuantity);
         }
 
-        inventory.updateItem(this.code, units);
+        inventory.updateItem(this.code, units * this.unitQuantity);
         System.out.println("Successfully produced " + units + " units of " + this.name);
     }
 

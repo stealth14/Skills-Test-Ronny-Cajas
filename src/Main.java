@@ -51,9 +51,9 @@ public class Main {
                 new Item("ICE", "ice", 1000, "ml"),
                 new Item("CONDENSED_MILK", "condensed milk", 1000, "ml"),
                 new Item("SUGAR", "sugar", 1000, "g"),
-                new Item("DRINK_STRAWBERRY", "Strawberry fruit drink", 0, "ml", DRINK_STRAWBERRY_INGREDIENTS),
-                new Item("DRINK_BANANA", "Banana fruit drink", 0, "ml", DRINK_BANANA_INGREDIENTS),
-                new Item("DRINK_MANGO", "Mango fruit drink", 0, "ml", DRINK_MANGO_INGREDIENTS),
+                new Item("DRINK_STRAWBERRY", "Strawberry fruit drink", 0, 300, "ml", DRINK_STRAWBERRY_INGREDIENTS),
+                new Item("DRINK_BANANA", "Banana fruit drink", 0, 300, "ml", DRINK_BANANA_INGREDIENTS),
+                new Item("DRINK_MANGO", "Mango fruit drink", 0, 300, "ml", DRINK_MANGO_INGREDIENTS),
         };
 
         Inventory inventory = new Inventory(items);
