@@ -17,7 +17,7 @@ OpenJDK 64-Bit Server VM (build 21.0.7+-13880790-b1038.58, mixed mode)
 ## Build
 
 ```bash
-javac -d out src/Main.java
+javac -d out -sourcepath src src/Main.java && java -cp out Main
 ```
 
 ## Run
