@@ -65,9 +65,9 @@ public class Main {
 
         while (running) {
             System.out.println("\n=== Recipe Menu ===");
-            System.out.println("1. Create Strawberry Fruit Drink");
-            System.out.println("2. Create Banana Fruit Drink");
-            System.out.println("3. Create Mango Fruit Drink");
+            System.out.println("1. Sell a Strawberry Fruit Drink");
+            System.out.println("2. Sell a Banana Fruit Drink");
+            System.out.println("3. Sell a Mango Fruit Drink");
             System.out.println("4. Exit");
             System.out.print("Select an option: ");
 
