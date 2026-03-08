@@ -164,15 +164,10 @@ public class Item {
             Item ingredientItem = ingredient.getItem();
             double neededQuantity = ingredientItem.getQuantity() * units;
 
-            for (Item invItem : inventory.getItems()) {
-                if (invItem.getCode().equals(ingredientItem.getCode())) {
-                    invItem.setQuantity(invItem.getQuantity() - neededQuantity);
-                    break;
-                }
-            }
+            inventory.updateItem(ingredientItem.getCode(), -neededQuantity);
         }
 
-        this.quantity += units;
+        inventory.updateItem(this.code, units);
         System.out.println("Successfully produced " + units + " units of " + this.name);
     }
 

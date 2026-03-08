@@ -6,27 +6,6 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        final Ingredient[] DRINK_STRAWBERRY_INGREDIENTS = new Ingredient[] {
-                new Ingredient(new Item("BLEND_STRAWBERRY", "blended strawberries", 150, "g"), 150),
-                new Ingredient(new Item("ICE", "ice", 90, "g"), 90),
-                new Ingredient(new Item("CONDENSED_MILK", "condensed milk", 60, "g"), 60),
-                new Ingredient(new Item("SUGAR", "sugar", 24, "g"), 24)
-        };
-
-        final Ingredient[] DRINK_BANANA_INGREDIENTS = new Ingredient[] {
-                new Ingredient(new Item("BLEND_BANANA", "blended bananas", 150, "g"), 150),
-                new Ingredient(new Item("ICE", "ice", 90, "g"), 90),
-                new Ingredient(new Item("CONDENSED_MILK", "condensed milk", 60, "g"), 60),
-                new Ingredient(new Item("SUGAR", "sugar", 24, "g"), 24)
-        };
-
-        final Ingredient[] DRINK_MANGO_INGREDIENTS = new Ingredient[] {
-                new Ingredient(new Item("BLEND_MANGO", "blended mangos", 150, "g"), 150),
-                new Ingredient(new Item("ICE", "ice", 90, "g"), 90),
-                new Ingredient(new Item("CONDENSED_MILK", "condensed milk", 60, "g"), 60),
-                new Ingredient(new Item("SUGAR", "sugar", 24, "g"), 24)
-        };
-
         final Ingredient[] BLEND_STRAWBERRY_INGREDIENTS = new Ingredient[] {
                 new Ingredient(new Item("STRAWBERRY", "strawberries", 100, "g"), 100)
         };
@@ -39,11 +18,34 @@ public class Main {
                 new Ingredient(new Item("MANGO", "mango", 140, "g"), 140)
         };
 
+        final Ingredient[] DRINK_STRAWBERRY_INGREDIENTS = new Ingredient[] {
+                new Ingredient(
+                        new Item("BLEND_STRAWBERRY", "blended strawberries", 150, "g", BLEND_STRAWBERRY_INGREDIENTS),
+                        150),
+                new Ingredient(new Item("ICE", "ice", 90, "g"), 90),
+                new Ingredient(new Item("CONDENSED_MILK", "condensed milk", 60, "g"), 60),
+                new Ingredient(new Item("SUGAR", "sugar", 24, "g"), 24)
+        };
+
+        final Ingredient[] DRINK_BANANA_INGREDIENTS = new Ingredient[] {
+                new Ingredient(new Item("BLEND_BANANA", "blended bananas", 150, "g", BLEND_BANANA_INGREDIENTS), 150),
+                new Ingredient(new Item("ICE", "ice", 90, "g"), 90),
+                new Ingredient(new Item("CONDENSED_MILK", "condensed milk", 60, "g"), 60),
+                new Ingredient(new Item("SUGAR", "sugar", 24, "g"), 24)
+        };
+
+        final Ingredient[] DRINK_MANGO_INGREDIENTS = new Ingredient[] {
+                new Ingredient(new Item("BLEND_MANGO", "blended mangos", 150, "g", BLEND_MANGO_INGREDIENTS), 150),
+                new Ingredient(new Item("ICE", "ice", 90, "g"), 90),
+                new Ingredient(new Item("CONDENSED_MILK", "condensed milk", 60, "g"), 60),
+                new Ingredient(new Item("SUGAR", "sugar", 24, "g"), 24)
+        };
+
         Item[] items = new Item[] {
                 new Item("STRAWBERRY", "strawberries", 1000, 100, "g"),
                 new Item("BANANA", "bananas", 1000, 120, "g"),
                 new Item("MANGO", "mango", 1000, 140, "g"),
-                new Item("BLEND_BANANA", "blended bananas", 200, 100, "ml", BLEND_BANANA_INGREDIENTS),
+                new Item("BLEND_BANANA", "blended bananas", 1000, 100, "ml", BLEND_BANANA_INGREDIENTS),
                 new Item("BLEND_MANGO", "blended mangos", 1000, 100, "ml", BLEND_MANGO_INGREDIENTS),
                 new Item("BLEND_STRAWBERRY", "blended strawberries", 1000, 100, "ml", BLEND_STRAWBERRY_INGREDIENTS),
                 new Item("ICE", "ice", 1000, "ml"),
