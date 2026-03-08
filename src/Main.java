@@ -1,6 +1,6 @@
 import models.inventory.Inventory;
 import models.inventory.Item;
-import models.inventory.Recipes;
+import models.inventory.Recipe;
 import java.util.Scanner;
 
 public class Main {
@@ -40,13 +40,13 @@ public class Main {
 
             switch (choice) {
                 case "1":
-                    executeRecipeAction(() -> Recipes.strawberryFruitDrink(inventory, 1), inventory);
+                    executeRecipeAction(() -> Recipe.strawberryFruitDrink(inventory, 1), inventory);
                     break;
                 case "2":
-                    executeRecipeAction(() -> Recipes.bananaFruitDrink(inventory, 1), inventory);
+                    executeRecipeAction(() -> Recipe.bananaFruitDrink(inventory, 1), inventory);
                     break;
                 case "3":
-                    executeRecipeAction(() -> Recipes.mangoFruitDrink(inventory, 1), inventory);
+                    executeRecipeAction(() -> Recipe.mangoFruitDrink(inventory, 1), inventory);
                     break;
                 case "4":
                     running = false;

@@ -1,6 +1,6 @@
 package models.inventory;
 
-public class Recipes {
+public class Recipe {
 
     public static void blendedStrawberry(Inventory inventory, int quantity) {
         // Update inventory when making blendedStrawberry
@@ -30,7 +30,7 @@ public class Recipes {
         // sugar
         // produce 100ml of strawberry fruit drink
 
-        Recipes.blendedStrawberry(inventory, 50 * quantity);
+        Recipe.blendedStrawberry(inventory, 50 * quantity);
 
         inventory.updateItem("BLEND_STRAWBERRY", -50 * quantity);
         inventory.updateItem("ICE", -30 * quantity);
@@ -46,7 +46,7 @@ public class Recipes {
         // 50ml of blended banana, 30ml of ice, 20ml of condensed milk, and 8g of sugar
         // produce 100ml of banana fruit drink
 
-        Recipes.blendedBanana(inventory, 50 * quantity);
+        Recipe.blendedBanana(inventory, 50 * quantity);
 
         inventory.updateItem("BLEND_BANANA", -50 * quantity);
         inventory.updateItem("ICE", -50 * quantity);
@@ -62,7 +62,7 @@ public class Recipes {
         // 50ml of blended mango, 30ml of ice, 20ml of condensed milk, and 8g of sugar
         // produce 100ml of mango fruit drink
 
-        Recipes.blendedMango(inventory, 50 * quantity);
+        Recipe.blendedMango(inventory, 50 * quantity);
 
         inventory.updateItem("BLEND_MANGO", -50 * quantity);
         inventory.updateItem("ICE", -30 * quantity);
