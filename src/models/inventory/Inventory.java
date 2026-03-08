@@ -30,7 +30,7 @@ public class Inventory {
      * @throws IllegalArgumentException if code is null or empty, if quantity would
      *                                  be negative, or if item not found
      */
-    public void updateItem(String code, int quantity) {
+    public void updateItem(String code, double quantity) {
         if (code == null || code.isEmpty()) {
             throw new IllegalArgumentException("Item code cannot be null or empty");
         }
@@ -38,7 +38,7 @@ public class Inventory {
         for (Item item : items) {
             if (item.getCode().equals(code)) {
                 if ((item.getQuantity() + quantity) < 0) {
-                    String message = String.format("You tried to consume %d %s %s, but you have only %.2f %s",
+                    String message = String.format("You tried to consume %.2f %s %s, but you have only %.2f %s",
                             quantity, item.getName(), item.getUnit(), item.getQuantity(), item.getUnit());
 
                     throw new IllegalArgumentException(message);

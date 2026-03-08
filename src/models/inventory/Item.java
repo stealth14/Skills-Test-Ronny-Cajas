@@ -7,18 +7,47 @@ public class Item {
     private String code;
     private String name;
     private double quantity;
+    private double unitQuantity;
     private String unit;
 
+    private Ingredient[] ingredients;
+
     public Item(String name, double quantity, String unit) {
-        this(deriveDefaultCode(name), name, quantity, unit);
+        this(deriveDefaultCode(name), name, quantity, 0, unit, (Ingredient[]) null);
+    }
+
+    public Item(String name, double quantity, double unitQuantity, String unit) {
+        this(deriveDefaultCode(name), name, quantity, unitQuantity, unit, (Ingredient[]) null);
+    }
+
+    public Item(String name, double quantity, String unit, Ingredient[] ingredients) {
+        this(deriveDefaultCode(name), name, quantity, 0, unit, ingredients);
+    }
+
+    public Item(String name, double quantity, double unitQuantity, String unit, Ingredient[] ingredients) {
+        this(deriveDefaultCode(name), name, quantity, unitQuantity, unit, ingredients);
     }
 
     public Item(String code, String name, double quantity, String unit) {
+        this(code, name, quantity, 0, unit, (Ingredient[]) null);
+    }
+
+    public Item(String code, String name, double quantity, double unitQuantity, String unit) {
+        this(code, name, quantity, unitQuantity, unit, (Ingredient[]) null);
+    }
+
+    public Item(String code, String name, double quantity, String unit, Ingredient[] ingredients) {
+        this(code, name, quantity, 0, unit, ingredients);
+    }
+
+    public Item(String code, String name, double quantity, double unitQuantity, String unit, Ingredient[] ingredients) {
         this.id = UUID.randomUUID().toString();
         setCode(code);
         this.name = name;
         this.quantity = quantity;
+        setUnitQuantity(unitQuantity);
         setUnit(unit);
+        setIngredients(ingredients);
     }
 
     public String getId() {
@@ -53,8 +82,28 @@ public class Item {
         this.quantity = quantity;
     }
 
+    public double getUnitQuantity() {
+        return unitQuantity;
+    }
+
+    public void setUnitQuantity(double unitQuantity) {
+        if (unitQuantity < 0) {
+            throw new IllegalArgumentException("Unit quantity cannot be negative");
+        }
+
+        this.unitQuantity = unitQuantity;
+    }
+
     public String getUnit() {
         return unit;
+    }
+
+    public Ingredient[] getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(Ingredient[] ingredients) {
+        this.ingredients = ingredients == null ? new Ingredient[0] : ingredients;
     }
 
     public void setUnit(String unit) {
@@ -82,4 +131,49 @@ public class Item {
 
         return normalizedName.length() > 6 ? normalizedName.substring(0, 6) : normalizedName;
     }
+
+    public boolean canBeProduced(Inventory inventory, int units) {
+        boolean canBeProduced = true;
+
+        for (Item invItem : inventory.getItems()) {
+
+            for (Ingredient ingredient : this.getIngredients()) {
+                Item ingredientItem = ingredient.getItem();
+                if (ingredientItem.getCode().equals(invItem.getCode())) {
+
+                    double neededQuantity = ingredientItem.getQuantity() * units;
+
+                    if (invItem.getQuantity() <= neededQuantity) {
+                        canBeProduced = false;
+                    }
+                }
+            }
+        }
+
+        return canBeProduced;
+    }
+
+    public void produce(Inventory inventory, int units) {
+
+        if (!canBeProduced(inventory, units)) {
+            throw new IllegalArgumentException(
+                    "Cannot produce " + units + " units of " + this.name + ": insufficient ingredients");
+        }
+
+        for (Ingredient ingredient : this.getIngredients()) {
+            Item ingredientItem = ingredient.getItem();
+            double neededQuantity = ingredientItem.getQuantity() * units;
+
+            for (Item invItem : inventory.getItems()) {
+                if (invItem.getCode().equals(ingredientItem.getCode())) {
+                    invItem.setQuantity(invItem.getQuantity() - neededQuantity);
+                    break;
+                }
+            }
+        }
+
+        this.quantity += units;
+        System.out.println("Successfully produced " + units + " units of " + this.name);
+    }
+
 }
